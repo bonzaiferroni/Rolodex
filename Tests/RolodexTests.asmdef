@@ -1,0 +1,16 @@
+{
+    "name": "RolodexTests",
+    "references": [
+        "Unity.TextMeshPro",
+        "Rolodex",
+        "Divvy"
+    ],
+    "optionalUnityReferences": [
+        "TestAssemblies"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false
+}

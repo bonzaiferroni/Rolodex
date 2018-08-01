@@ -1,0 +1,11 @@
+﻿{
+	"name": "Rolodex",
+	"references": [
+        "Unity.TextMeshPro",
+        "Divvy"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false
+}
