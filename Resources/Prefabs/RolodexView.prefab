@@ -106,6 +106,7 @@ MonoBehaviour:
   Style: 0
   _reversed: 0
   _childSize: {x: 0, y: 30}
+  _expandChildren: 1
 --- !u!114 &114914205433089336
 MonoBehaviour:
   m_ObjectHideFlags: 1
