@@ -17,11 +17,11 @@ namespace Rolodex.Core
         
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            var sb = new StringBuilder(Name);
             var parent = Parent;
             while (parent != null)
             {
-                sb.Insert(0, '.');
+                sb.Insert(0, " > ");
                 sb.Insert(0, parent.Name);
                 parent = parent.Parent;
             }

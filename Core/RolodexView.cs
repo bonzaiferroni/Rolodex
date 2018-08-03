@@ -1,35 +1,68 @@
-﻿using Divvy.Core;
+﻿using System.Collections.Generic;
+using Divvy.Core;
 using UnityEngine;
 
 namespace Rolodex.Core
 {
-    public class RolodexView : MonoBehaviour
+    public class RolodexView : MonoBehaviour, IRolodexPrefab
     {
         [SerializeField] private DivvyText _label;
         
         public DivvyText Label => _label;
         
-        public RolodexMenu Parent { get; private set; }
         public DivvyParent Panel { get; private set; }
+        public RolodexMenu Menu { get; private set; }
+        public List<RolodexElementView> Elements { get; } = new List<RolodexElementView>();
+
+        public void Init()
+        {
+            Panel = GetComponent<DivvyParent>();
+            Panel.Init();
+        }
         
         public void Mount(RolodexMenu menu)
         {
-            Label.Text = menu.ToString();
+            Reset();
+            Menu = menu;
             
-            if (menu.Parent != null)
+            Label.Text = Menu.ToString();
+            
+            if (Menu.Parent != null)
             {
-                Parent = menu.Parent;
                 var element = new RolodexElement("back", Back);
-                var elementView = RolodexPrefabs.GetView<RolodexElementView>();
-                elementView.Mount(element);
+                AddElement(element);
             }
-            
-            
+
+            foreach (var element in Menu.Elements)
+            {
+                AddElement(element);
+            }
+        }
+
+        private void AddElement(RolodexElement element)
+        {
+            var elementView = RolodexPrefabs.GetView<RolodexElementView>();
+            Panel.AddChild(elementView.Panel); // must come before elementView.Mount(element)
+            elementView.Mount(element);
+            Elements.Add(elementView);
         }
 
         private void Back()
         {
-            Mount(Parent);
+            Mount(Menu.Parent);
+        }
+        
+        private void Reset()
+        {
+            foreach (var view in Elements)
+            {
+                Panel.RemoveChild(view.Panel);
+                view.Dismount();
+            }
+
+            Elements.Clear();
+
+            Menu = null;
         }
     }
 }

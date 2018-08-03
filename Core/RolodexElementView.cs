@@ -10,9 +10,22 @@ namespace Rolodex.Core
         [SerializeField] private Button _button;
         
         public RolodexElement Element { get; private set; }
+        public DivvyPanel Panel { get; private set; }
+        public DivvyAnimatedVisibility Visibility { get; private set; }
         
         public void Init()
         {
+            Panel = GetComponent<DivvyPanel>();
+            Panel.Init();
+            Visibility = GetComponent<DivvyAnimatedVisibility>();
+            Visibility.OnFinishedAnimation += Recycle;
+            Visibility.Init();
+        }
+
+        private void Recycle(bool isVisible)
+        {
+            if (isVisible) return;
+            RolodexPrefabs.Return(this);
         }
 
         private void Start()
@@ -29,6 +42,13 @@ namespace Rolodex.Core
         {
             Element = element;
             _label.Text = element.Name;
+            Visibility.Show();
+        }
+
+        public void Dismount()
+        {
+            Element = null;
+            Visibility.Hide();
         }
     }
 }
