@@ -38,7 +38,7 @@ namespace Rolodex.Core
 
         private void Start()
         {
-            Button.onClick.AddListener(OnClick);
+            if (Button) Button.onClick.AddListener(OnClick);
         }
 
         private void OnClick()
