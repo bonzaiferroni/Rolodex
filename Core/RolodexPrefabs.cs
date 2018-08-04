@@ -10,6 +10,7 @@ namespace Rolodex.Core
         private static readonly Dictionary<Type, string> Subpaths = new Dictionary<Type, string>()
         {
             // class structures
+            {typeof(RolodexPathElementView), "RolodexPathElementView"},
             {typeof(RolodexElementView), "RolodexElementView"},
             {typeof(RolodexView), "RolodexView"},
         };

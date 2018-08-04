@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using Divvy.Core;
 using NUnit.Framework;
+using Rolodex.Core;
 using UnityEngine;
 
 namespace Rolodex.Tests
@@ -13,14 +14,6 @@ namespace Rolodex.Tests
             var data = new RolodexData();
             data.MountMenu();
             Assert.AreEqual(data.Menu, data.View.Menu);
-        }
-
-        [Test]
-        public void Mount_LabelSetToMenuName()
-        {
-            var data = new RolodexData();
-            data.MountMenu();
-            Assert.AreEqual(data.Menu.Name, data.View.Label.Text);
         }
 
         [Test]
