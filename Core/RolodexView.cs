@@ -30,6 +30,7 @@ namespace Rolodex.Core
         {
             Reset();
             Menu = menu;
+            if (Menu == null) return;
 
             AddMenuPath(menu, true);
 
@@ -82,7 +83,7 @@ namespace Rolodex.Core
             
             foreach (var view in Elements)
             {
-                Panel.RemoveChild(view.Panel);
+            Panel.RemoveChild(view.Panel);
                 view.Dismount();
             }
 
