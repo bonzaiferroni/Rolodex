@@ -51,10 +51,10 @@ namespace Rolodex.Core
 
         public static void Return(MonoBehaviour item)
         {
-            var type = item.GetType();
+            /*var type = item.GetType();
             if (!Subpaths.ContainsKey(type)) throw new Exception("Type not referenced in prefab loader");
             var pool = GetPool(type);
-            pool.Push(item.gameObject);
+            pool.Push(item.gameObject);*/
         }
     }
 

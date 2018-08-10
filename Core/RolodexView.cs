@@ -8,12 +8,14 @@ namespace Rolodex.Core
 {
     public class RolodexView : MonoBehaviour, IRolodexPrefab
     {
-        [SerializeField] private DivvyParent _pathParent;
         [SerializeField] private Sprite _dividerSprite;
         [SerializeField] private Color _pathColor;
         [SerializeField] private Color _defaultColor;
+        [SerializeField] private DivvyParent _pathParent;
+        [SerializeField] private DivvyParent _elementParent;
 
         public DivvyParent PathParent => _pathParent;
+        public DivvyParent ElementParent => _elementParent;
         
         public DivvyParent Panel { get; private set; }
         public RolodexMenu Menu { get; private set; }
@@ -28,7 +30,7 @@ namespace Rolodex.Core
         
         public void Mount(RolodexMenu menu)
         {
-            Reset();
+            ResetView();
             Menu = menu;
             if (Menu == null) return;
 
@@ -38,6 +40,7 @@ namespace Rolodex.Core
             {
                 AddElement(element);
             }
+            Panel.UpdatePosition(true);
         }
 
         private void AddMenuPath(RolodexMenu menu, bool isDisplayedMenu)
@@ -66,12 +69,12 @@ namespace Rolodex.Core
         {
             if (element.Color == default(Color)) element.Color = _defaultColor;
             var elementView = RolodexPrefabs.GetView<RolodexElementView>();
-            Panel.AddChild(elementView.Panel); // must come before elementView.Mount(element)
+            ElementParent.AddChild(elementView.Panel); // must come before elementView.Mount(element)
             elementView.Mount(element);
             Elements.Add(elementView);
         }
         
-        private void Reset()
+        private void ResetView()
         {
             foreach (var view in MenuPath)
             {
@@ -83,7 +86,7 @@ namespace Rolodex.Core
             
             foreach (var view in Elements)
             {
-            Panel.RemoveChild(view.Panel);
+                ElementParent.RemoveChild(view.Panel);
                 view.Dismount();
             }
 

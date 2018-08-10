@@ -14,7 +14,7 @@ namespace Rolodex.Core
             Sprite = sprite;
         }
 
-        public string Name { get; }
+        public string Name { get; set; }
         public Action Action { get; }
         public Color Color { get; set; }
         public Sprite Sprite { get; set; }
