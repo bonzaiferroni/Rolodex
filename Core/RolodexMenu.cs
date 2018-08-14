@@ -11,7 +11,7 @@ namespace Rolodex.Core
             Parent = parent;
         }
         
-        public string Name { get; }
+        public string Name { get; set; }
         public RolodexMenu Parent { get; }
         public List<RolodexElement> Elements { get; } = new List<RolodexElement>();
         
