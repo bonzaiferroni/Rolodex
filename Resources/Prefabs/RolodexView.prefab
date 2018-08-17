@@ -437,9 +437,9 @@ MonoBehaviour:
     Height: 0
   Spacing: 0
   Style: 0
+  ExpandChildren: 1
   _reversed: 0
   _childSize: {x: 0, y: 0}
-  _expandChildren: 1
   _content: {fileID: 114932742263167646}
   MaxSize:
     Width: 0
@@ -509,9 +509,9 @@ MonoBehaviour:
     Height: 0
   Spacing: 0
   Style: 0
+  ExpandChildren: 1
   _reversed: 0
   _childSize: {x: 0, y: 30}
-  _expandChildren: 1
 --- !u!114 &114891205348809370
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -561,9 +561,9 @@ MonoBehaviour:
     Height: 0
   Spacing: 0
   Style: 0
+  ExpandChildren: 1
   _reversed: 0
   _childSize: {x: 0, y: 0}
-  _expandChildren: 1
 --- !u!114 &114968618911511742
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -586,9 +586,9 @@ MonoBehaviour:
     Height: 0
   Spacing: 0
   Style: 1
+  ExpandChildren: 0
   _reversed: 0
   _childSize: {x: 0, y: 0}
-  _expandChildren: 0
 --- !u!114 &114985578049900690
 MonoBehaviour:
   m_ObjectHideFlags: 1
