@@ -11,20 +11,20 @@ namespace Rolodex.Core
         [SerializeField] private Sprite _dividerSprite;
         [SerializeField] private Color _pathColor;
         [SerializeField] private Color _defaultColor;
-        [SerializeField] private DivvyParent _pathParent;
-        [SerializeField] private DivvyParent _elementParent;
+        [SerializeField] private Div _pathParent;
+        [SerializeField] private Div _elementParent;
 
-        public DivvyParent PathParent => _pathParent;
-        public DivvyParent ElementParent => _elementParent;
+        public Div PathParent => _pathParent;
+        public Div ElementParent => _elementParent;
         
-        public DivvyParent Panel { get; private set; }
+        public Div Panel { get; private set; }
         public RolodexMenu Menu { get; private set; }
         public List<RolodexElementView> MenuPath { get; } = new List<RolodexElementView>();
         public List<RolodexElementView> Elements { get; } = new List<RolodexElementView>();
 
         public void Init()
         {
-            Panel = GetComponent<DivvyParent>();
+            Panel = GetComponent<Div>();
             Panel.Init();
         }
         

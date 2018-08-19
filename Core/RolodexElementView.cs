@@ -8,20 +8,20 @@ namespace Rolodex.Core
     {
         [SerializeField] private DivvyText _label;
         [SerializeField] private Image _icon;
-        [SerializeField] private DivvyPanel _spritePanel;
+        [SerializeField] private Element _spritePanel;
 
         public DivvyText Label => _label;
         public Image Icon => _icon;
-        public DivvyPanel SpritePanel => _spritePanel;
+        public Element SpritePanel => _spritePanel;
         public Button Button { get; private set; }
         public Image Background { get; private set; }
         public RolodexElement Element { get; private set; }
-        public DivvyParent Panel { get; private set; }
+        public Div Panel { get; private set; }
         public DivvyAnimatedVisibility Visibility { get; private set; }
         
         public virtual void Init()
         {
-            Panel = GetComponent<DivvyParent>();
+            Panel = GetComponent<Div>();
             Panel.Init();
             Background = GetComponent<Image>();
             Button = GetComponent<Button>();
