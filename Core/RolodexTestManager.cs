@@ -8,7 +8,7 @@ namespace Rolodex.Core
         {
             var data = new RolodexData(transform);
             data.MountMenu();
-            data.View.Panel.Rect.anchoredPosition = new Vector2(10, -10);
+            data.View.Div.Rect.anchoredPosition = new Vector2(10, -10);
         }
     }
 }

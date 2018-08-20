@@ -18,15 +18,16 @@ namespace Rolodex.Core
         public Div PathParent => _pathParent;
         public Div ElementParent => _elementParent;
         
-        public Div Panel { get; private set; }
+        public Div Div { get; private set; }
         public RolodexMenu Menu { get; private set; }
         public List<RolodexElementView> MenuPath { get; } = new List<RolodexElementView>();
         public List<RolodexElementView> Elements { get; } = new List<RolodexElementView>();
 
         public void Init()
         {
-            Panel = GetComponent<Div>();
-            Panel.Init();
+            Div = GetComponent<Div>();
+            Div.LineHeight = 30f;
+            Div.Init();
         }
         
         public void Mount(RolodexMenu menu)
@@ -41,7 +42,7 @@ namespace Rolodex.Core
             {
                 AddElement(element);
             }
-            Panel.UpdatePosition(true);
+            Div.UpdatePosition(true);
         }
 
         private void AddMenuPath(RolodexMenu menu, bool isDisplayedMenu)
