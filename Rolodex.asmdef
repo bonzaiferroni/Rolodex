@@ -1,8 +1,8 @@
-﻿{
-	"name": "Rolodex",
-	"references": [
+{
+    "name": "Rolodex",
+    "references": [
         "Unity.TextMeshPro",
-        "Divvy"
+        "DivLib"
     ],
     "optionalUnityReferences": [],
     "includePlatforms": [],

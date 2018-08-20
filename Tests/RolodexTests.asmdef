@@ -3,7 +3,7 @@
     "references": [
         "Unity.TextMeshPro",
         "Rolodex",
-        "Divvy"
+        "DivLib"
     ],
     "optionalUnityReferences": [
         "TestAssemblies"
