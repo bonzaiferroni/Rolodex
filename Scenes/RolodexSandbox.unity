@@ -321,6 +321,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _expandSelf: 0
+  Margin:
+    Top: 0
+    Right: 0
+    Bottom: 0
+    Left: 0
   Padding:
     Top: 10
     Right: 10
@@ -331,9 +336,9 @@ MonoBehaviour:
     Height: 0
   Spacing: 0
   Style: 0
+  ExpandChildren: 0
   _reversed: 0
-  _childSize: {x: 0, y: 30}
-  _expandChildren: 0
+  _lineHeight: 30
 --- !u!1001 &495796526
 Prefab:
   m_ObjectHideFlags: 0
@@ -601,6 +606,26 @@ Prefab:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 224416614374552956, guid: 843ed9283775c2845b29d6aa99366cc3,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 114281559299962124, guid: 843ed9283775c2845b29d6aa99366cc3,
+        type: 2}
+      propertyPath: _isVisible
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 225025032346839272, guid: 843ed9283775c2845b29d6aa99366cc3,
+        type: 2}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 225025032346839272, guid: 843ed9283775c2845b29d6aa99366cc3,
+        type: 2}
+      propertyPath: m_BlocksRaycasts
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 843ed9283775c2845b29d6aa99366cc3, type: 2}
   m_IsPrefabParent: 0
@@ -806,6 +831,26 @@ Prefab:
         type: 2}
       propertyPath: m_isInputParsingRequired
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224391754938327638, guid: 39741d93092f5f94391faa1b163624f6,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 114706547828944954, guid: 39741d93092f5f94391faa1b163624f6,
+        type: 2}
+      propertyPath: _isVisible
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 225358428426923198, guid: 39741d93092f5f94391faa1b163624f6,
+        type: 2}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 225358428426923198, guid: 39741d93092f5f94391faa1b163624f6,
+        type: 2}
+      propertyPath: m_BlocksRaycasts
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 39741d93092f5f94391faa1b163624f6, type: 2}

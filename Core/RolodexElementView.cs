@@ -1,26 +1,23 @@
 ﻿using DivLib.Core;
-using Divvy.Core;
+using FusionLib.Core;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Rolodex.Core
 {
-    public class RolodexElementView : MonoBehaviour, IRolodexPrefab
+    public class RolodexElementView : MonoBehaviour
     {
-        [SerializeField] private DivText _label;
-        [SerializeField] private Image _icon;
-        [SerializeField] private Element _spritePanel;
-
-        public DivText Label => _label;
-        public Image Icon => _icon;
-        public Element SpritePanel => _spritePanel;
+        public DivText Label;
+        public Image Icon;
+        public DivVisibility IconVisibility;
+        
         public Button Button { get; private set; }
         public Image Background { get; private set; }
         public RolodexElement Element { get; private set; }
         public Div Panel { get; private set; }
         public DivAnimatedVisibility Visibility { get; private set; }
         
-        public virtual void Init()
+        public void Init()
         {
             Panel = GetComponent<Div>();
             Panel.Init();
@@ -52,7 +49,7 @@ namespace Rolodex.Core
             Element = element;
             Label.Text = element.Name;
             Icon.sprite = element.Sprite;
-            SpritePanel.Visibility.SetVisibility(element.Sprite != null);
+            IconVisibility.SetVisibility(element.Sprite != null);
             Background.color = element.Color;
             Button.interactable = element.Action != null;
             Visibility.Show();

@@ -5,9 +5,9 @@ namespace Rolodex.Core
 {
     public class RolodexData
     {
-        public RolodexData(Transform transform = null)
+        public RolodexData(Transform transform = null, int extraCount = 0)
         {
-            View = RolodexPrefabs.GetView<RolodexView>();
+            View = RolodexFactory.GetMenu();
             if (!transform)
             {
                 Canvas = new GameObject("Canvas", typeof(Canvas));
@@ -25,13 +25,18 @@ namespace Rolodex.Core
             Menu.Elements.Add(new RolodexElement("Element2", () => Debug.Log("Element2 pushed")));
             SubMenu.Elements.Add(new RolodexElement("SubSubMenu", () => View.Mount(SubSubMenu)));
             SubMenu.Elements.Add(new RolodexElement("SubElement1", () => Debug.Log("SubElement1 pushed")));
+
+            for (int i = 0; i < extraCount; i++)
+            {
+                Menu.Elements.Add(new RolodexElement($"Extra{i}", () => Debug.Log($"Pushed extra {i}")));
+            }
         }
         
         public GameObject Canvas { get; }
         public RolodexMenu Menu { get; }
         public RolodexMenu SubMenu { get; }
         public RolodexMenu SubSubMenu { get; }
-        public RolodexView View { get; }
+        public RolodexMenuView View { get; }
         public bool Element1Pushed { get; private set; }
 
         public void MountMenu()

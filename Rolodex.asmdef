@@ -2,7 +2,8 @@
     "name": "Rolodex",
     "references": [
         "Unity.TextMeshPro",
-        "DivLib"
+        "DivLib",
+        "FusionLib"
     ],
     "optionalUnityReferences": [],
     "includePlatforms": [],

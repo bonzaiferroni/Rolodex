@@ -6,7 +6,7 @@ namespace Rolodex.Core
     {
         private void Start()
         {
-            var data = new RolodexData(transform);
+            var data = new RolodexData(transform, 40);
             data.MountMenu();
             data.View.Div.Rect.anchoredPosition = new Vector2(10, -10);
         }
