@@ -28,6 +28,7 @@ namespace Rolodex.Core
             menu.DividerSprite = Fusion.LoadResource<Sprite>("RolodexDividerSprite");
             menu.PathParent = obj.Get<Div>(HeaderTag);
             menu.ElementParent = obj.Get<Div>(ContentTag);
+            menu.Scroll = divScroll;
         }
 
         private void MenuHeaderParts(Fusion obj)

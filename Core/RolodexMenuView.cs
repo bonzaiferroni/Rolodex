@@ -14,6 +14,7 @@ namespace Rolodex.Core
         public Color DefaultColor;
         public Div PathParent;
         public Div ElementParent;
+        public DivScroll Scroll;
         
         public Div Div { get; private set; }
         public RolodexMenu Menu { get; private set; }
