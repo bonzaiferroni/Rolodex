@@ -42,7 +42,11 @@ namespace Rolodex.Core
             obj.NewChild(LabelTag, LabelParts);
 
             var image = obj.Add<Image>(LightBackground);
-            obj.Add<Button>().targetGraphic = image;
+            var button = obj.Add<Button>();
+            button.targetGraphic = image;
+            var colorBlock = button.colors;
+            colorBlock.disabledColor = Color.white;
+            button.colors = colorBlock;
             obj.Add<DivFade>();
             obj.Add<PoolMember>();
         }

@@ -17,7 +17,6 @@ namespace Rolodex.Core
             var div = obj.Add<Div>();
             div.Style = LayoutStyle.Vertical;
             div.ExpandChildren = true;
-            div.LineHeight = 30;
 
             var divScroll = obj.Get<DivScroll>(ScrollTag);
             divScroll.MaxSize.Set(0, 150);
