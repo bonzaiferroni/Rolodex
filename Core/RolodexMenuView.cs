@@ -9,7 +9,6 @@ namespace Rolodex.Core
 {
     public class RolodexMenuView : MonoBehaviour
     {
-        public Sprite DividerSprite;
         public Color PathColor;
         public Color DefaultColor;
         public Div PathParent;
@@ -48,7 +47,7 @@ namespace Rolodex.Core
             if (menu.Parent != null)
             {
                 AddMenuPath(menu.Parent, false);
-                sprite = DividerSprite;
+                sprite = RolodexFactory.NodeSprite;
             }
             
             Action action = null;
@@ -57,7 +56,7 @@ namespace Rolodex.Core
                 action = () => Mount(menu);
             }
 
-            var element = new RolodexElement(menu.Name, action, PathColor, sprite);
+            var element = new RolodexElement(menu.Name, true, action, PathColor, sprite);
             var view = RolodexFactory.GetPathElement();
             PathParent.AddChild(view.Panel);
             view.Mount(element);
@@ -67,6 +66,7 @@ namespace Rolodex.Core
         private void AddElement(RolodexElement element)
         {
             if (element.Color == default(Color)) element.Color = DefaultColor;
+            if (element.IsNode && element.Sprite == null) element.Sprite = RolodexFactory.NodeSprite;
             var elementView = RolodexFactory.GetElement();
             ElementParent.AddChild(elementView.Panel); // must come before elementView.Mount(element)
             elementView.Mount(element);

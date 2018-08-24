@@ -20,15 +20,15 @@ namespace Rolodex.Core
             Menu = new RolodexMenu("TestMenu", null);
             SubMenu = new RolodexMenu("SubMenu", Menu);
             SubSubMenu = new RolodexMenu("SubSubMenu", SubMenu);
-            Menu.Elements.Add(new RolodexElement("SubMenu", MountSubMenu));
-            Menu.Elements.Add(new RolodexElement("Element1", () => Element1Pushed = true));
-            Menu.Elements.Add(new RolodexElement("Element2", () => Debug.Log("Element2 pushed")));
-            SubMenu.Elements.Add(new RolodexElement("SubSubMenu", () => View.Mount(SubSubMenu)));
-            SubMenu.Elements.Add(new RolodexElement("SubElement1", () => Debug.Log("SubElement1 pushed")));
+            Menu.Elements.Add(new RolodexElement("SubMenu", true, MountSubMenu));
+            Menu.Elements.Add(new RolodexElement("Element1", false, () => Element1Pushed = true));
+            Menu.Elements.Add(new RolodexElement("Element2", false, () => Debug.Log("Element2 pushed")));
+            SubMenu.Elements.Add(new RolodexElement("SubSubMenu", true, () => View.Mount(SubSubMenu)));
+            SubMenu.Elements.Add(new RolodexElement("SubElement1", false, () => Debug.Log("SubElement1 pushed")));
 
             for (int i = 0; i < extraCount; i++)
             {
-                Menu.Elements.Add(new RolodexElement($"Extra{i}", () => Debug.Log($"Pushed extra {i}")));
+                Menu.Elements.Add(new RolodexElement($"Extra{i}", false, () => Debug.Log($"Pushed extra {i}")));
             }
         }
         
