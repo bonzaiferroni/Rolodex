@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 namespace Rolodex.Core
 {
-    public class RolodexMenuView : MonoBehaviour
+    public class RolodexMenuView : FusionView
     {
         public Color PathColor;
         public Color DefaultColor;
@@ -16,22 +16,38 @@ namespace Rolodex.Core
         public DivScroll Scroll;
         
         public Div Div { get; private set; }
+
         public RolodexMenu Menu { get; private set; }
         public List<RolodexElementView> MenuPath { get; } = new List<RolodexElementView>();
         public List<RolodexElementView> Elements { get; } = new List<RolodexElementView>();
-
+        public DivVisibility CloseVisibility { get; private set; }
+        public Button CloseButton { get; private set; }
+        
         public void Init()
         {
             Div = GetComponent<Div>();
             Div.Init();
+            CloseVisibility = GetChild<DivVisibility>(RolodexMenuRecipe.CloseButtonTag);
+            CloseButton = GetChild<Button>(RolodexMenuRecipe.CloseButtonTag);
         }
-        
+
+        private void Start()
+        {
+            if (CloseButton) CloseButton.onClick.AddListener(OnCloseClick);
+        }
+
+        private void OnCloseClick()
+        {
+            Close();
+        }
+
         public void Mount(RolodexMenu menu)
         {
             ResetView();
             Menu = menu;
             if (Menu == null) return;
 
+            CloseVisibility.SetVisibility(Menu.CanClose);
             AddMenuPath(menu, true);
 
             foreach (var element in Menu.Elements)
@@ -39,6 +55,11 @@ namespace Rolodex.Core
                 AddElement(element);
             }
             Div.UpdatePosition(true);
+        }
+
+        public void Close()
+        {
+            ResetView();
         }
 
         private void AddMenuPath(RolodexMenu menu, bool isDisplayedMenu)
@@ -90,6 +111,7 @@ namespace Rolodex.Core
             }
 
             Elements.Clear();
+            CloseVisibility.Hide();
 
             Menu = null;
         }

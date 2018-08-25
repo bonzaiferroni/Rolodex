@@ -5,12 +5,14 @@ namespace Rolodex.Core
 {
     public class RolodexMenu
     {
-        public RolodexMenu(string name, RolodexMenu parent)
+        public RolodexMenu(string name, RolodexMenu parent, bool canClose = true)
         {
             Name = name;
             Parent = parent;
+            CanClose = canClose;
         }
-        
+
+        public bool CanClose { get; }
         public string Name { get; set; }
         public RolodexMenu Parent { get; }
         public List<RolodexElement> Elements { get; } = new List<RolodexElement>();

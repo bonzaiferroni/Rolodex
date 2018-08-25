@@ -3,7 +3,8 @@
     "references": [
         "Unity.TextMeshPro",
         "Rolodex",
-        "DivLib"
+        "DivLib",
+        "FusionLib"
     ],
     "optionalUnityReferences": [
         "TestAssemblies"
