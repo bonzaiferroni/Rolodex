@@ -9,9 +9,9 @@ namespace Rolodex.Core
 {
     public class RolodexMenuView : FusionView
     {
-        public Color PathColor;
+        public Color HeaderColor;
         public Color DefaultColor;
-        public Div PathParent;
+        public Div HeaderDiv;
         public Div ElementParent;
         public DivScroll Scroll;
         
@@ -40,7 +40,7 @@ namespace Rolodex.Core
         {
             Close();
         }
-
+        
         public void Mount(RolodexMenu menu)
         {
             ResetView();
@@ -55,11 +55,23 @@ namespace Rolodex.Core
                 AddElement(element);
             }
             Div.UpdatePosition(true);
+            
         }
 
         public void Close()
         {
             ResetView();
+        }
+
+        public void SetHeaderColor(Color color)
+        {
+            HeaderDiv.GetComponent<Image>().color = color;
+            HeaderColor = color;
+        }
+
+        public void SetDefaultColor(Color color)
+        {
+            DefaultColor = color;
         }
 
         private void AddMenuPath(RolodexMenu menu, bool isDisplayedMenu)
@@ -77,9 +89,9 @@ namespace Rolodex.Core
                 action = () => Mount(menu);
             }
 
-            var element = new RolodexElement(menu.Name, true, action, PathColor, sprite);
+            var element = new RolodexElement(menu.Name, true, action, HeaderColor, sprite);
             var view = RolodexFactory.GetPathElement();
-            PathParent.AddChild(view.Panel);
+            HeaderDiv.AddChild(view.Panel);
             view.Mount(element);
             MenuPath.Add(view);
         }
@@ -98,7 +110,7 @@ namespace Rolodex.Core
         {
             foreach (var view in MenuPath)
             {
-                PathParent.RemoveChild(view.Panel);
+                HeaderDiv.RemoveChild(view.Panel);
                 view.Dismount();
             }
 

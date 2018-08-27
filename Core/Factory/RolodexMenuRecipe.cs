@@ -23,9 +23,9 @@ namespace Rolodex.Core
             divScroll.MaxSize.Set(0, 150);
 
             var menu = obj.Add<RolodexMenuView>();
-            menu.PathColor = DarkBackgroundColor;
+            menu.HeaderColor = DarkBackgroundColor;
             menu.DefaultColor = LightBackgroundColor;
-            menu.PathParent = obj.Get<Div>(HeaderTag);
+            menu.HeaderDiv = obj.Get<Div>(HeaderTag);
             menu.ElementParent = obj.Get<Div>(ContentTag);
             menu.Scroll = divScroll;
         }
