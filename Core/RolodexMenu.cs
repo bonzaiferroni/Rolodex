@@ -14,7 +14,7 @@ namespace Rolodex.Core
 
         public bool CanClose { get; }
         public string Name { get; set; }
-        public RolodexMenu Parent { get; }
+        public RolodexMenu Parent { get; set; }
         public List<RolodexElement> Elements { get; } = new List<RolodexElement>();
         
         public override string ToString()
