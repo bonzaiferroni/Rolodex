@@ -51,7 +51,7 @@ namespace Rolodex.Core
             obj.Add<Button>().targetGraphic = image;
 
             var visibility = obj.Add<DivEnable>();
-            visibility.Graphic = image;
+            visibility.Add(image);
             visibility.IsVisible = false;
         }
     }

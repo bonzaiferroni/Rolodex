@@ -58,7 +58,7 @@ namespace Rolodex.Core
             div.MinSize.Set(20, 20);
             
             var image = obj.Add<Image>();
-            obj.Add<DivEnable>().Graphic = image;
+            obj.Add<DivEnable>().Add(image);
             image.sprite = Fusion.LoadResource<Sprite>("RolodexCircleSprite");
         }
     }
