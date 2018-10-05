@@ -26,7 +26,6 @@ namespace Rolodex.Core
         public void Init()
         {
             Div = GetComponent<Div>();
-            Div.Init();
             CloseVisibility = GetChild<DivVisibility>(RolodexMenuRecipe.CloseButtonTag);
             CloseButton = GetChild<Button>(RolodexMenuRecipe.CloseButtonTag);
         }
@@ -55,7 +54,6 @@ namespace Rolodex.Core
                 AddElement(element);
             }
             Div.UpdatePosition(true);
-            
         }
 
         public void Close()

@@ -20,7 +20,6 @@ namespace Rolodex.Core
         public void Init()
         {
             Panel = GetComponent<Div>();
-            Panel.Init();
             Background = GetComponent<Image>();
             Button = GetComponent<Button>();
             Visibility = GetComponent<DivAnimatedVisibility>();
