@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using DivLib.Core;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace Rolodex.Core
@@ -16,6 +17,9 @@ namespace Rolodex.Core
                 transform = Canvas.transform;
             }
             View.transform.SetParent(transform);
+            View.gameObject.AddComponent<DivRoot>().Initialize();
+            View.Div.SetPivot(new Vector2(0, 1));
+            View.Div.LineHeight = 30;
             
             Menu = new RolodexMenu("TestMenu", null);
             SubMenu = new RolodexMenu("SubMenu", Menu);
