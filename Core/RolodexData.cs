@@ -21,26 +21,26 @@ namespace Rolodex.Core
             View.Div.SetPivot(new Vector2(0, 1));
             View.Div.LineHeight = 30;
             
-            Menu = new RolodexMenu("TestMenu", null);
-            SubMenu = new RolodexMenu("SubMenu", Menu);
-            SubSubMenu = new RolodexMenu("SubSubMenu", SubMenu);
-            Menu.Elements.Add(new RolodexElement("SubMenu", true, MountSubMenu));
-            Menu.Elements.Add(new RolodexElement("Element1", false, () => Element1Pushed = true));
-            Menu.Elements.Add(new RolodexElement("Element2", false, () => Debug.Log("Element2 pushed")));
-            SubMenu.Elements.Add(new RolodexElement("SubSubMenu", true, () => View.Mount(SubSubMenu)));
-            SubMenu.Elements.Add(new RolodexElement("SubElement1", false, () => Debug.Log("SubElement1 pushed")));
+            Menu = new RoloMenu("TestMenu", null);
+            SubMenu = new RoloMenu("SubMenu", Menu);
+            SubSubMenu = new RoloMenu("SubSubMenu", SubMenu);
+            Menu.Items.Add(new RolodexElement("SubMenu", true, MountSubMenu));
+            Menu.Items.Add(new RolodexElement("Element1", false, () => Element1Pushed = true));
+            Menu.Items.Add(new RolodexElement("Element2", false, () => Debug.Log("Element2 pushed")));
+            SubMenu.Items.Add(new RolodexElement("SubSubMenu", true, () => View.Mount(SubSubMenu)));
+            SubMenu.Items.Add(new RolodexElement("SubElement1", false, () => Debug.Log("SubElement1 pushed")));
 
             for (int i = 0; i < extraCount; i++)
             {
-                Menu.Elements.Add(new RolodexElement($"Extra{i}", false, () => Debug.Log($"Pushed extra {i}")));
+                Menu.Items.Add(new RolodexElement($"Extra{i}", false, () => Debug.Log($"Pushed extra {i}")));
             }
         }
         
         public GameObject Canvas { get; }
-        public RolodexMenu Menu { get; }
-        public RolodexMenu SubMenu { get; }
-        public RolodexMenu SubSubMenu { get; }
-        public RolodexMenuView View { get; }
+        public RoloMenu Menu { get; }
+        public RoloMenu SubMenu { get; }
+        public RoloMenu SubSubMenu { get; }
+        public RoloView View { get; }
         public bool Element1Pushed { get; private set; }
 
         public void MountMenu()

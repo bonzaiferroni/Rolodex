@@ -20,7 +20,7 @@ namespace Rolodex.Tests
         {
             var data = new RolodexData();
             data.MountMenu();
-            Assert.AreEqual(data.Menu.Elements[0], data.View.Elements[0].Element);
+            Assert.AreEqual(data.Menu.Items[0], data.View.Elements[0].Item);
         }
     }
 }

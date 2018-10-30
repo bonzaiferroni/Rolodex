@@ -3,9 +3,17 @@ using System.Text;
 
 namespace Rolodex.Core
 {
-    public class RolodexMenu
+    public interface IRoloMenu
     {
-        public RolodexMenu(string name, RolodexMenu parent, bool canClose = true)
+        bool CanClose { get; }
+        string Name { get; }
+        RoloMenu Parent { get; }
+        List<IRoloItem> Items { get; }
+    }
+    
+    public class RoloMenu : IRoloMenu
+    {
+        public RoloMenu(string name, RoloMenu parent, bool canClose = true)
         {
             Name = name;
             Parent = parent;
@@ -14,8 +22,8 @@ namespace Rolodex.Core
 
         public bool CanClose { get; }
         public string Name { get; set; }
-        public RolodexMenu Parent { get; set; }
-        public List<RolodexElement> Elements { get; } = new List<RolodexElement>();
+        public RoloMenu Parent { get; set; }
+        public List<IRoloItem> Items { get; } = new List<IRoloItem>();
         
         public override string ToString()
         {

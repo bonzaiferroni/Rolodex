@@ -12,7 +12,7 @@ namespace Rolodex.Core
             // class structures
             {typeof(RolodexPathElementView), "RolodexPathElementView"},
             {typeof(RolodexElementView), "RolodexElementView"},
-            {typeof(RolodexMenuView), "RolodexView"},
+            {typeof(RoloView), "RolodexView"},
         };
 
         private static readonly Dictionary<Type, Stack<GameObject>> Pool = new Dictionary<Type, Stack<GameObject>>();

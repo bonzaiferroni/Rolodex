@@ -13,7 +13,7 @@ namespace Rolodex.Core
         
         public Button Button { get; private set; }
         public Image Background { get; private set; }
-        public RolodexElement Element { get; private set; }
+        public IRoloItem Item { get; private set; }
         public Div Panel { get; private set; }
         public DivAnimatedVisibility Visibility { get; private set; }
         
@@ -40,23 +40,22 @@ namespace Rolodex.Core
 
         private void OnClick()
         {
-            Element.Action();
+            Item.Action();
         }
 
-        public void Mount(RolodexElement element)
+        public void Mount(IRoloItem item)
         {
-            Element = element;
-            Label.Text = element.Name;
-            Icon.sprite = element.Sprite;
-            IconVisibility.SetVisibility(element.Sprite != null);
-            Background.color = element.Color;
-            Button.interactable = element.Action != null;
+            Item = item;
+            Label.Text = item.Name;
+            Icon.sprite = item.Sprite;
+            IconVisibility.SetVisibility(item.Sprite != null);
+            Background.color = item.Color;
             Visibility.Show();
         }
 
         public void Dismount()
         {
-            Element = null;
+            Item = null;
             Visibility.Hide();
         }
     }

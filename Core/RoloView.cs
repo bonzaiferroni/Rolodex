@@ -7,7 +7,15 @@ using UnityEngine.UI;
 
 namespace Rolodex.Core
 {
-    public class RolodexMenuView : FusionView
+    public interface IRoloView
+    {
+        IRoloMenu Menu { get; }
+        
+        void Mount(IRoloMenu menu);
+        void Close();
+    }
+    
+    public class RoloView : FusionView, IRoloView
     {
         public Color HeaderColor;
         public Color DefaultColor;
@@ -17,7 +25,7 @@ namespace Rolodex.Core
         
         public Div Div { get; private set; }
 
-        public RolodexMenu Menu { get; private set; }
+        public IRoloMenu Menu { get; private set; }
         public List<RolodexElementView> MenuPath { get; } = new List<RolodexElementView>();
         public List<RolodexElementView> Elements { get; } = new List<RolodexElementView>();
         public DivVisibility CloseVisibility { get; private set; }
@@ -40,19 +48,20 @@ namespace Rolodex.Core
             Close();
         }
         
-        public void Mount(RolodexMenu menu)
+        public void Mount(IRoloMenu menu)
         {
             ResetView();
             Menu = menu;
             if (Menu == null) return;
 
             CloseVisibility.SetVisibility(Menu.CanClose);
-            AddMenuPath(menu, true);
+            AddMenuPath(menu);
 
-            foreach (var element in Menu.Elements)
+            foreach (var element in Menu.Items)
             {
                 AddElement(element);
             }
+            
             Div.UpdatePosition(true);
         }
 
@@ -72,35 +81,29 @@ namespace Rolodex.Core
             DefaultColor = color;
         }
 
-        private void AddMenuPath(RolodexMenu menu, bool isDisplayedMenu)
+        private void AddMenuPath(IRoloMenu menu)
         {
             Sprite sprite = null;
             if (menu.Parent != null)
             {
-                AddMenuPath(menu.Parent, false);
+                AddMenuPath(menu.Parent);
                 sprite = RolodexFactory.NodeSprite;
             }
-            
-            Action action = null;
-            if (!isDisplayedMenu)
-            {
-                action = () => Mount(menu);
-            }
 
-            var element = new RolodexElement(menu.Name, true, action, HeaderColor, sprite);
+            var element = new RoloNode(menu.Name, menu, this, HeaderColor, sprite);
             var view = RolodexFactory.GetPathElement();
             HeaderDiv.AddChild(view.Panel);
             view.Mount(element);
             MenuPath.Add(view);
         }
 
-        private void AddElement(RolodexElement element)
+        private void AddElement(IRoloItem item)
         {
-            if (element.Color == default(Color)) element.Color = DefaultColor;
-            if (element.IsNode && element.Sprite == null) element.Sprite = RolodexFactory.NodeSprite;
+            if (item.Color == default(Color)) item.Color = DefaultColor;
+            if (item.IsNode && item.Sprite == null) item.Sprite = RolodexFactory.NodeSprite;
             var elementView = RolodexFactory.GetElement();
             ElementParent.AddChild(elementView.Panel); // must come before elementView.Mount(element)
-            elementView.Mount(element);
+            elementView.Mount(item);
             Elements.Add(elementView);
         }
         

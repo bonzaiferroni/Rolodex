@@ -25,9 +25,9 @@ namespace Rolodex.Core
             }
         }
 
-        public static RolodexMenuView GetMenu()
+        public static RoloView GetMenu()
         {
-            var view = Fusion.Create("RolodexMenu", new RolodexMenuRecipe().Parts).Get<RolodexMenuView>();
+            var view = Fusion.Create("RolodexMenu", new RolodexMenuRecipe().Parts).Get<RoloView>();
             view.Init();
             return view;
         }
